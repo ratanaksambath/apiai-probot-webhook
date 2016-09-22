@@ -36,9 +36,10 @@ def postSheetsu(req):
     project_manager_name = req.get("result").get("result").get("parameters").get("project_manager_name")
     values = {'created_at': created_at, 'project_title': project_title,'project_manager_name':project_manager_name}
     data = urllib.urlencode(values)
-    req = urllib2.request(url,data)
+    req = urllib2.Request(url,data)
     res = urllib2.urlopen(req)
-    if res.getcode() == 201
+    status_code = res.getcode()
+    if status_code == 201
         return {
             "speech": "Your project has been added to your excel sheet in google drive",
             "displayText": "Your project has been added to your excel sheet in google drive",
