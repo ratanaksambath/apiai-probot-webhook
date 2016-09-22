@@ -55,6 +55,13 @@ def postSheetsu(req):
             # "contextOut": [],
             "source": "apiai-weather-webhook-sample"
         }
+    return {
+            "speech": "Your project has been added to your excel sheet in google drive",
+            "displayText": "Your project has been added to your excel sheet in google drive",
+            # "data": data,
+            # "contextOut": [],
+            "source": "apiai-weather-webhook-sample"
+    }
 
 def processRequest(req):
     if req.get("result").get("action") != "yahooWeatherForecast":
