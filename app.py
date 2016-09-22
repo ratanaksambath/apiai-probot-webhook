@@ -19,15 +19,26 @@ def webhook():
     print("Request:")
     print(json.dumps(req, indent=4))
 
-    # res = processRequest(req)
+    res = postSheetsu(req)
 
     # res = json.dumps(res, indent=4)
     # print(res)
     # r = make_response(res)
     # r.headers['Content-Type'] = 'application/json'
     # return r
-
-
+def postSheetsu(req):
+    if req.get("result").get("action") != "probotSheets":
+        return{}
+    url = "https://sheetsu.com/apis/v1.0/4bec9339fcd9"
+    created_at = req.get("result").get("timestamp")
+    project_title = req.get("result").get("result").get("parameters").get("project_title")
+    project_manager_name = req.get("result").get("result").get("parameters").get("project_manager_name")
+    values = {'created_at': created_at, 'project_title': project_title,'project_manager_name':project_manager_name}
+    data = urllib.urlencode(values)
+    request = request(url,data)
+    response = urllib.urlopen(request)
+    print(response.getcode())
+    
 def processRequest(req):
     if req.get("result").get("action") != "yahooWeatherForecast":
         return {}
