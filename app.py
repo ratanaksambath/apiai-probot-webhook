@@ -39,7 +39,7 @@ def postSheetsu(req):
     req = urllib2.Request(url,data)
     res = urllib2.urlopen(req)
     status_code = res.getcode()
-    if status_code == 201
+    if status_code == 201:
         return {
             "speech": "Your project has been added to your excel sheet in google drive",
             "displayText": "Your project has been added to your excel sheet in google drive",
