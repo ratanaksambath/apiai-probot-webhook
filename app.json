@@ -1,7 +1,7 @@
 {
   "name": "API.AI webhook demonstration",
   "description": "API.AI webhook demonstration",
-  "repository": "https://github.com/api-ai/apiai-weather-webhook-sample",
-  "logo": "http://xvir.github.io/img/apiai.png",
+  "repository": "https://github.com/ratanaksambath/apiai-weather-webhook-sample",
+  "logo": "https://www.scrapesentry.com/wp-content/uploads/2014/01/stop_hacker_web_bots.jpg",
   "keywords": ["api.ai", "natural language"]
 }
