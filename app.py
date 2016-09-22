@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import urllib
+import urllib2
 import json
 import os
 
@@ -25,7 +26,7 @@ def webhook():
     # print(res)
     # r = make_response(res)
     # r.headers['Content-Type'] = 'application/json'
-    # return r
+    return res
 def postSheetsu(req):
     if req.get("result").get("action") != "probotSheets":
         return{}
@@ -34,11 +35,17 @@ def postSheetsu(req):
     project_title = req.get("result").get("result").get("parameters").get("project_title")
     project_manager_name = req.get("result").get("result").get("parameters").get("project_manager_name")
     values = {'created_at': created_at, 'project_title': project_title,'project_manager_name':project_manager_name}
-    print(values)
     data = urllib.urlencode(values)
-    res = urllib.urlopen(url,data)
-    print res.read()
-    return res
+    req = urllib2.request(url,data)
+    res = urllib2.urlopen(req)
+    if res.getcode() == 201
+        return {
+            "speech": "Your project has been added to your excel sheet in google drive",
+            "displayText": "Your project has been added to your excel sheet in google drive",
+            # "data": data,
+            # "contextOut": [],
+            "source": "apiai-weather-webhook-sample"
+        }
 
 def processRequest(req):
     if req.get("result").get("action") != "yahooWeatherForecast":
