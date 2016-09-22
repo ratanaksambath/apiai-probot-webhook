@@ -15,7 +15,7 @@ app = Flask(__name__)
 @app.route('/webhook', methods=['POST'])
 def webhook():
     req = request.get_json(silent=True, force=True)
-    print("How do you turn this on ?")
+    print("Change locally")
     print("Request:")
     print(json.dumps(req, indent=4))
 
