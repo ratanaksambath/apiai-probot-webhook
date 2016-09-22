@@ -47,6 +47,14 @@ def postSheetsu(req):
             # "contextOut": [],
             "source": "apiai-weather-webhook-sample"
         }
+    if status_code == 500:
+        return{
+            "speech": "error",
+            "displayText": "error",
+            # "data": data,
+            # "contextOut": [],
+            "source": "apiai-weather-webhook-sample"
+        }
 
 def processRequest(req):
     if req.get("result").get("action") != "yahooWeatherForecast":
