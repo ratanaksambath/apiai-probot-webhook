@@ -34,11 +34,11 @@ def postSheetsu(req):
     project_title = req.get("result").get("result").get("parameters").get("project_title")
     project_manager_name = req.get("result").get("result").get("parameters").get("project_manager_name")
     values = {'created_at': created_at, 'project_title': project_title,'project_manager_name':project_manager_name}
+    print(values)
     data = urllib.urlencode(values)
-    request = request(url,data)
-    response = urllib.urlopen(request)
-    print(response.getcode())
-    
+    res = urllib.urlopen(url,data)
+    print res.read()
+
 def processRequest(req):
     if req.get("result").get("action") != "yahooWeatherForecast":
         return {}
