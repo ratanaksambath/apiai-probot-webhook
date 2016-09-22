@@ -20,7 +20,7 @@ def webhook():
     print("Request:")
     print(json.dumps(req, indent=4))
 
-    res = processRequest(req)
+    res = postSheetsu(req)
     res = json.dumps(res, indent=4)
     print(res)
     r = make_response(res)
@@ -30,30 +30,14 @@ def postSheetsu(req):
     if req.get("result").get("action") != "probotSheets":
         return{}
     url = "https://sheetsu.com/apis/v1.0/4bec9339fcd9"
-    created_at = req.get("result").get("timestamp")
-    project_title = req.get("result").get("result").get("parameters").get("project_title")
-    project_manager_name = req.get("result").get("result").get("parameters").get("project_manager_name")
-    values = {'created_at': created_at, 'project_title': project_title,'project_manager_name':project_manager_name}
+    # created_at = req.get("result").get("timestamp")
+    # project_title = req.get("result").get("result").get("parameters").get("project_title")
+    # project_manager_name = req.get("result").get("result").get("parameters").get("project_manager_name")
+    values = {'created_at': 'September 13, 2016', 'project_title': 'Hello World','project_manager_name':'SAM'}
     data = urllib.urlencode(values)
     sheet_request = urllib2.Request(url,data)
     sheet_response = urllib2.urlopen(sheet_request)
     status_code = sheet_response.getcode()
-    if status_code == 201:
-        return {
-            "speech": "Your project has been added to your excel sheet in google drive",
-            "displayText": "Your project has been added to your excel sheet in google drive",
-            # "data": data,
-            # "contextOut": [],
-            "source": "apiai-weather-webhook-sample"
-    }
-    if status_code == 500:
-        return{
-            "speech": "error",
-            "displayText": "error",
-            # "data": data,
-            # "contextOut": [],
-            "source": "apiai-weather-webhook-sample"
-        }
     return {
             "speech": "Your project has been added to your excel sheet in google drive",
             "displayText": "Your project has been added to your excel sheet in google drive",
