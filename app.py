@@ -39,14 +39,13 @@ def postSheetsu(req):
     req = urllib2.Request(url,data)
     res = urllib2.urlopen(req)
     status_code = res.getcode()
-    if status_code == 201:
-        return {
+    return {
             "speech": "Your project has been added to your excel sheet in google drive",
             "displayText": "Your project has been added to your excel sheet in google drive",
             # "data": data,
             # "contextOut": [],
             "source": "apiai-weather-webhook-sample"
-        }
+    }
     if status_code == 500:
         return{
             "speech": "error",
