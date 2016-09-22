@@ -20,7 +20,7 @@ def webhook():
     print(json.dumps(req, indent=4))
 
     res = postSheetsu(req)
-
+    print(res)
     # res = json.dumps(res, indent=4)
     # print(res)
     # r = make_response(res)
@@ -38,6 +38,7 @@ def postSheetsu(req):
     data = urllib.urlencode(values)
     res = urllib.urlopen(url,data)
     print res.read()
+    return res
 
 def processRequest(req):
     if req.get("result").get("action") != "yahooWeatherForecast":
