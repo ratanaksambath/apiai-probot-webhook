@@ -25,7 +25,7 @@ def webhook():
     print(res)
     r = make_response(res)
     r.headers['Content-Type'] = 'application/json'
-    return res
+    return r
 def postSheetsu(req):
     if req.get("result").get("action") != "probotSheets":
         return{}
