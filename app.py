@@ -37,7 +37,7 @@ def postSheetsu(req):
     sheet_request = urllib2.Request(url,data)
     sheet_response = urllib2.urlopen(sheet_request)
     status_code = sheet_response.getcode()
-    if status_code != 201 
+    if status_code != 201:
         return {
                 "speech": "Can't seem to create a new project to your google sheet",
                 "displayText": "Can't seem to create a new project to your google sheet",
@@ -45,7 +45,7 @@ def postSheetsu(req):
                 # "contextOut": [],
                 "source": "probotSheets-webhook-sample"
         }
-    else
+    else:
         return {
                 "speech": "Your project has been added to your excel sheet in google drive",
                 "displayText": "Your project has been added to your excel sheet in google drive",
