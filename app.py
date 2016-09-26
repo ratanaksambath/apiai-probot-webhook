@@ -29,10 +29,10 @@ def postSheetsu(req):
     if req.get("result").get("action") != "probotSheets":
         return{}
     url = "https://sheetsu.com/apis/v1.0/4bec9339fcd9"
-    created_at = req.get("result").get("timestamp")
-    project_title = req.get("result").get("parameters").get("project_title")
-    project_manager_name = req.get("result").get("parameters").get("project_manager_name")
-    values = {'created_at': created_at, 'project_title': project_title,'project_manager_name': project_manager_name}
+    # created_at = req.get("result").get("timestamp")
+    # project_title = req.get("result").get("parameters").get("project_title")
+    # project_manager_name = req.get("result").get("parameters").get("project_manager_name")
+    values = {'created_at': 'December 13, 2016', 'project_title': 'How do you turn this on','project_manager_name': 'NEMO'}
     data = urllib.urlencode(values)
     sheet_request = urllib2.Request(url,data)
     sheet_response = urllib2.urlopen(sheet_request)
