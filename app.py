@@ -29,7 +29,6 @@ def postSheetsu(req):
     if req.get("result").get("action") != "probotSheets":
         return{}
     url = "https://sheetsu.com/apis/v1.0/4bec9339fcd9"
-    created_at = req.get("result").get("timestamp")
     project_title = req.get("result").get("parameters").get("project_title")
     project_manager_name = req.get("result").get("parameters").get("project_manager_name")
     values = {'created_at': created_at, 'project_title': project_title,'project_manager_name': project_manager_name}
