@@ -31,7 +31,7 @@ def postSheetsu(req):
     url = "https://sheetsu.com/apis/v1.0/4bec9339fcd9"
     project_title = req.get("result").get("parameters").get("project_title")
     project_manager_name = req.get("result").get("parameters").get("project_manager_name")
-    values = {'created_at': created_at, 'project_title': project_title,'project_manager_name': project_manager_name}
+    values = {'project_title': project_title,'project_manager_name': project_manager_name}
     data = urllib.urlencode(values)
     sheet_request = urllib2.Request(url,data)
     sheet_response = urllib2.urlopen(sheet_request)
