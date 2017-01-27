@@ -4,6 +4,7 @@ import urllib
 import urllib2
 import json
 import os
+import datetime
 
 from flask import Flask
 from flask import request
@@ -29,9 +30,11 @@ def postSheetsu(req):
     if req.get("result").get("action") != "probotSheets":
         return{}
     url = "https://sheetsu.com/apis/v1.0/4bec9339fcd9"
+    time = datetime.datetime.now()
+    today = time.strftime('%b %d,%Y')
     project_title = req.get("result").get("parameters").get("title")
     project_manager_name = req.get("result").get("parameters").get("name")
-    values = {'project_title': project_title,'project_manager_name': project_manager_name}
+    values = {'created_at': today,'updated_at':today,'project_title': project_title,'project_manager_name': project_manager_name}
     data = urllib.urlencode(values)
     sheet_request = urllib2.Request(url,data)
     sheet_response = urllib2.urlopen(sheet_request)
